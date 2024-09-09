@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemyAuthoring : MonoBehaviour {
     public float MoveSpeed;
     public float Acceleration;
+    public Vector2 Bounds = new Vector2(8.889875f, 5f);
 
     public class EnemyBaker : Baker<EnemyAuthoring> {
         
@@ -15,7 +16,7 @@ public class EnemyAuthoring : MonoBehaviour {
             uint randNum = (uint)UnityEngine.Random.Range(0, 10000);
             AddComponent(entity, new EnemyTag());
             AddComponent(entity, new Enemy { Acceleration = authoring.Acceleration, MoveSpeed = authoring.MoveSpeed, Velocity = 0, Random = new(1) });
-            AddComponent(entity, new PlayerBounds { Value = new float2(Camera.main.orthographicSize * Camera.main.aspect, Camera.main.orthographicSize) });
+            AddComponent(entity, new PlayerBounds { Value = authoring.Bounds });
         }
     }
 }

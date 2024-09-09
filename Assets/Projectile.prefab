@@ -131,3 +131,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileSpeed: 20
   ProjectileLifeTime: 1
+  Bounds: {x: 8.889875, y: 5}

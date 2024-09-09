@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 2
   Acceleration: 20
+  Bounds: {x: 8.889875, y: 5}
 --- !u!1 &2806042001906556301
 GameObject:
   m_ObjectHideFlags: 0

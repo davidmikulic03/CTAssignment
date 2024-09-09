@@ -14,8 +14,8 @@ public partial struct PlayerMoveSystem : ISystem {
 
         foreach(var (transform, velocity, angularVelocity, input, acceleration, bounds) in SystemAPI.Query<RefRW<LocalTransform>, RefRW<PlayerVelocity>, RefRW<PlayerAngularVelocity>, RefRO<PlayerMoveInput>, RefRO<PlayerAcceleration>, PlayerBounds>().WithAll<PlayerTag>()) {
 
-            velocity.ValueRW.Value *= 0.99f;
-            angularVelocity.ValueRW.Value *= 0.99f;
+            velocity.ValueRW.Value -= velocity.ValueRO.Value / 2f * deltaTime;
+            angularVelocity.ValueRW.Value -= angularVelocity.ValueRO.Value / 0.5f * deltaTime;
 
             angularVelocity.ValueRW.Value -= input.ValueRO.Value.x * acceleration.ValueRO.Value.x * deltaTime;
             velocity.ValueRW.Value += transform.ValueRO.Up().xy * input.ValueRO.Value.y * acceleration.ValueRO.Value.y * deltaTime;
